@@ -1,0 +1,35 @@
+header {
+  margin-top: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  
+    nav {
+        color: #ffffff;
+        background-color: #000000;
+        border-radius: 10px 10px 0px 0px; 
+        padding: 10px 0px;
+    }
+    ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+    }
+    a {
+        padding: 10px 20px;
+        border-radius: 5px; 
+        transition: .5s ease;
+        display: block;
+        font-size: 10px;
+        text-align: center;
+        &:hover {
+            text-decoration: underline;
+            color: #ffffff;
+            background-color: #fff0e3;
+        }
+    }
+}

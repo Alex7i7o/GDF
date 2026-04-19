@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../fonts/helvetica-world-regular.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; 
+}
+
+
+@font-face {
+  font-family: 'Zing';
+  src: url('../fonts/ZingRustDemo-Base.otf') format('opentype'); 
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; 
+}
+
+$fuente-principal: 'Helvetica', Arial, sans-serif;
+$fuente-titulos: 'ZingRustCustom', sans-serif;

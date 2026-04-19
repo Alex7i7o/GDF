@@ -1,0 +1,66 @@
+@use "../../Colores" as *;
+@use "../../Fuentes" as *;
+
+.categorias {
+    object-fit: cover;
+    width: 93%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: $naranja;
+    border-radius: 10px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 5;
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0px 10px 10px 10px;
+        justify-content: space-evenly;
+    }
+    h2 {
+        text-align: center;
+        font-family: $fuente-titulos;
+        color: $color-acentos;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        text-transform: uppercase;
+        font-size: 2em;
+        margin: 0px;
+    }
+    h3 {
+        text-transform: uppercase;
+        font-size: 1em;
+        margin: 10px 0px 0px;
+    }
+    .categoria {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0px;
+        background: $color-oscuro;
+    }
+    p {
+        z-index: 5;
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        box-sizing: border-box;
+        font-size: 10px;
+        transition: all 0.3s ease;
+        border-radius: 10px;
+    }
+   
+    .categoria:nth-of-type(2) a p {
+        font-size: 10px;
+    }
+    div a:hover p {
+        background: rgba(0, 0, 0, 0.8);
+    }
+    img:hover {
+        transform: scale(1.1); /* La imagen crece un 10% */
+    }
+}

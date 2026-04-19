@@ -1,0 +1,81 @@
+@use "../../Colores" as *;
+.productos {
+    background: $color-oscuro;
+    width: 91%;
+    height: 100%;
+    margin: 20px auto 0px auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px $color-acentos;
+    margin-bottom: 20px;
+    .contenedor_productos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 5px;
+    }
+    .mapa-contenedor {
+        width: 90%;
+        height: 70%;
+        max-width: 800px; // O el ancho que prefieras para tu sección
+        margin: 20px auto;
+        border: 2px solid $naranja; // Usando tu variable de color
+        border-radius: 12px;
+        overflow: hidden; // Para que las esquinas del mapa sigan el redondeado
+        box-shadow: 0 0 15px rgba($naranja, 0.2);
+
+        iframe {
+            display: block;
+            // Efecto Dark Mode para el mapa:
+            filter: grayscale(100%) invert(90%) contrast(95%);
+        }
+        }
+    h3 {
+        text-align: center;
+        color: #fff0e3;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+    h3 strong {
+        font-family: "Dancing Script";
+        font-size: 2em;
+       
+    }
+    .producto {
+        background: #6d1f1f;
+        border-radius: 10px;
+        width: 100%;
+        color: #fff0e3;
+        padding-bottom: 5px;
+        font-size: 0.7em;
+    }
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 60%;
+        border-radius: 10px;
+    }
+    .producto button {
+        padding: 10px 20px;
+        background-color: #fff0e3;
+        color: #6d1f1f;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        &:hover {
+            background-color: #a84342;
+            color: #fff0e3;
+            border: 1px solid #fff0e3;
+        }
+    
+        &:active {
+            background-color: #a84342;
+            color: #fff0e3;
+            border: 1px solid #fff0e3;
+        }
+    }
+}

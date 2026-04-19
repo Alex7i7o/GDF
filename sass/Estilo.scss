@@ -1,0 +1,82 @@
+@use "Colores";
+@use "paginas/Home/Header";
+@use "paginas/Home/Intro";
+@use "paginas/Home/Categorias";
+@use "paginas/Home/Productos";
+@use "paginas/Home/Familia";
+@use "Fuentes" as *;
+
+
+div {
+  text-align: center;
+}
+
+
+html {
+  color: Colores.$naranja;
+  font-size: 1em;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  font-family: $fuente-principal;
+  background-color: #000000;
+}
+body {
+  margin: 0px;
+  padding-bottom: 80px;
+}
+
+.hero {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+a {
+  font-weight: 600;
+  color: #ff9100;
+  text-decoration: none;
+}
+
+footer {
+  color: #ff9500;
+  text-align: center;
+}
+
+//Responsive
+
+@media (min-width: 1024px) {
+  section:first-child {
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+  }
+  .contenedor_productos {
+  display: flex;
+  }
+  .categorias {
+  width: 50%;
+  }
+.categorias .categoria {
+  height: 300px;
+  width: 200px;
+  }
+
+  header {
+  margin-top: 0px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  }
+
+  header nav {
+  border-radius: 10px 10px 10px 10px; 
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  }
+}
+  
