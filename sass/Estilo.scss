@@ -12,6 +12,7 @@ div {
 }
 
 
+
 html {
   color: Colores.$naranja;
   font-size: 1em;
@@ -79,4 +80,11 @@ footer {
   margin-right: auto;
   }
 }
-  
+/* Ejemplo de efecto aparición */
+html {
+  animation: aparecer 0.8s ease-out;
+}
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
