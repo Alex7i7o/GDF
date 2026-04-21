@@ -37,6 +37,7 @@
      </nav>
   </header>
 
+
   <!-- La informacion -->
   <main>
     <section class="intro"> <!--Primer grid-->
@@ -49,7 +50,15 @@
         
       </div>
       <div class="contenedor_lia">
-        
+    
+      </div>
+      
+      <video class="video" autoplay muted loop playsinline poster="tu-imagen-de-portada.jpg">
+      <source src="/Video/PotocoloGDF.mp4" type="video/mp4">
+      </video>
+      <div class="video-controls">
+      <button id="audioBtn" class="control-btn">🔊</button>
+      <button id="playPauseBtn" class="control-btn">⏸️</button>
       </div>
       
       
@@ -102,7 +111,7 @@
   <footer>
     <p>GDF // Protocolo activado. El fuego continúa.</p>
   </footer>
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/main.js" defer></script>
 </body>
 
 </html>
