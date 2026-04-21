@@ -19,7 +19,7 @@
     }
     p {
         justify-content: center;
-        margin: 0px;
+        margin: 10px;
         color: $color-claro;
         font-weight: 600;
         letter-spacing: 1px;
@@ -100,3 +100,40 @@
     transition: all 1s ease;
 }
 
+.signup-container {
+    display: flex;
+    gap: 10px;
+    width: 90%;
+    max-width: 400px; /* Que no se estire demasiado en escritorio */
+    margin: 20px auto;
+
+    input {
+        flex: 1; /* Ocupa todo el espacio disponible */
+        background: #1a1a1a;
+        border: 1px solid #333;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 5px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    input:focus {
+        border-color: #FF4500; /* Naranja GDF al seleccionar */
+    }
+
+    button {
+        background: #FF4500;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #e03e00;
+    }
+}

@@ -45,3 +45,25 @@ window.addEventListener('scroll', () => {
         controls.classList.remove('is-absolute');
     }
 });
+
+// -----------
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxwb2bQw96ZuCg5jYRFktQKMbBpE3ko08-6XUGPRlMPGI6mTuWJm32T6YmjPGSJgOUH/exec'; // La URL que copiaste al desplegar
+const form = document.getElementById('gdf-signup-form');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  
+  // Creamos el objeto con los datos
+  const formData = new FormData(form);
+  
+  fetch(scriptURL, { 
+    method: 'POST', 
+    body: formData 
+  })
+  .then(response => {
+    alert("¡Inscripción recibida!");
+    form.reset();
+  })
+  .catch(error => console.error('Error!', error.message));
+});
