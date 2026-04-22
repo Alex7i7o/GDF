@@ -48,22 +48,28 @@ window.addEventListener('scroll', () => {
 
 // -----------
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxwb2bQw96ZuCg5jYRFktQKMbBpE3ko08-6XUGPRlMPGI6mTuWJm32T6YmjPGSJgOUH/exec'; // La URL que copiaste al desplegar
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwQiyKAbUIxAQRBZteOANiVqUtciZzUi8AS9h7wD1DA8U5RIc8I2gstjWXe_oo-X3J4/exec'; // La URL que copiaste al desplegar
 const form = document.getElementById('gdf-signup-form');
 
 form.addEventListener('submit', e => {
   e.preventDefault();
   
-  // Creamos el objeto con los datos
   const formData = new FormData(form);
   
+  // Usamos keepalive para que la petición se envíe aunque cambies de página
   fetch(scriptURL, { 
     method: 'POST', 
-    body: formData 
+    mode: 'no-cors', 
+    body: formData,
+    keepalive: true 
   })
-  .then(response => {
+  .then(() => {
+    // Como usamos no-cors, no podemos leer la respuesta, 
+    // pero podemos asumir que si no dio error, se envió.
     alert("¡Inscripción recibida!");
     form.reset();
   })
-  .catch(error => console.error('Error!', error.message));
+  .catch(error => {
+    console.error('Error:', error);
+  });
 });
