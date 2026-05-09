@@ -4,7 +4,6 @@
 .categorias {
     object-fit: cover;
     width: 93%;
-    height: 100%;
     margin-right: auto;
     margin-left: auto;
     background-color: $naranja;
@@ -12,12 +11,16 @@
     margin-top: 10px;
     position: relative;
     z-index: 15;
-    div {
+    padding-bottom: 10px;
+    .contenedor {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 10px;
-        padding: 0px 10px 10px 10px;
-        justify-content: space-evenly;
+        justify-content: center;
+    }
+    div {  
+        padding: 10px 10px 10px 10px;
+        justify-content: center;
         z-index: 5;
     }
     h2 {
@@ -31,37 +34,33 @@
     }
     h3 {
         text-transform: uppercase;
-        font-size: 1em;
+        font-size: 1.2m;
         margin: 10px 0px 0px;
-    }
-    .categoria {
-        border-radius: 10px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        position: relative;
-        padding: 0px;
-        background: $color-oscuro;
+        color: $color-oscuro;
+        text-align: center;
+        margin: 0px;
+        font-weight: bold;
     }
     p {
         z-index: 5;
         width: 100%;
         margin: 0;
-        padding: 10px;
+        padding: 0px 20px 10px 20px;
         text-align: center;
         font-weight: bold;
         box-sizing: border-box;
-        font-size: 10px;
+        font-size: 1em;
         transition: all 0.3s ease;
         border-radius: 10px;
+        color: $color-oscuro;
     }
-   
-    .categoria:nth-of-type(2) a p {
-        font-size: 10px;
-    }
-    div a:hover p {
-        background: rgba(0, 0, 0, 0.8);
-    }
-    img:hover {
-        transform: scale(1.1); /* La imagen crece un 10% */
+    .video-nosotros {
+        width: 93%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        border: 2px solid $color-oscuro;
+        margin-bottom: 5px;
     }
 }

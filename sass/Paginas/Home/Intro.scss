@@ -4,9 +4,9 @@
 .intro {
     position: relative; /* Esto es clave: mantiene todo contenido aquí adentro */
     width: 100%;
-    height: 100vh; /* Ocupa exactamente la altura de la pantalla del celular */
+    // height: 100vh; /* Ocupa exactamente la altura de la pantalla del celular */
     overflow: hidden;
-    background: linear-gradient(to bottom,rgba(0,0,0,1) 10%, transparent 50%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(to bottom,rgba(0,0,0,1) 30%, transparent 60%, transparent 80%, rgba(0,0,0,1) 100%);
     h1 {
         margin: 0px;
         font-family: $fuente-titulos;
@@ -15,14 +15,18 @@
             line-height: 1;
             display: block;
             margin-top: -15px;
+            animation: latidoletra 1.5s infinite;
+            transition: transform 0.2s ease-in-out;
         }
     }
     p {
         justify-content: center;
         margin: 10px;
-        color: $color-claro;
         font-weight: 600;
         letter-spacing: 1px;
+        padding: 10px;
+        color: $naranja;
+        margin-bottom: 10px;
         strong {
             font-family: $fuente-principal;
         }
@@ -66,12 +70,13 @@
 
 .video {
     width: 100%;
-    position: absolute;
-    top: 50px;
+    position: relative;
+    height: 100vh;
     z-index: -10;
     left: 0;
     width: 100%;
     height: 100%;
+    margin-top: -20px;
     object-fit: cover;
 }
 
@@ -100,11 +105,20 @@
     transition: all 1s ease;
 }
 
+.form {
+    text-align: center;
+    h2 {
+        font-size: 2em;
+        margin: 0px;
+    }
+}
+
 .signup-container {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     width: 90%;
-    max-width: 400px; /* Que no se estire demasiado en escritorio */
+    max-width: 600px; /* Que no se estire demasiado en escritorio */
     margin: 20px auto;
 
     input {
@@ -129,11 +143,47 @@
         padding: 12px 20px;
         border-radius: 5px;
         font-weight: bold;
+        font-size: 1.5em;
         cursor: pointer;
         transition: 0.3s;
+        animation: latido 1.5s infinite;
+        transition: transform 0.2s ease-in-out;
     }
 
     button:hover {
-        background: #e03e00;
+        background: $color-acentos;
+        animation-play-state: paused; /* Pausa la animación */
+        transform: scale(1.1);
+    }
+}
+
+
+@keyframes latido {
+  0% {
+    transform: scale(0.95);          /* Tamaño normal */
+    box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7); /* Sombra naranja pegada */
+  }
+  50% {
+    transform: scale(1);       /* Se agranda un 5% */
+    box-shadow: 0 0 0 10px rgba(255, 69, 0, 0); /* Sombra se expande y desaparece */
+  }
+  100% {
+    transform: scale(0.95);          /* Vuelve al tamaño normal */
+    box-shadow: 0 0 0 0 rgba(255, 69, 0, 0);   /* Sombra desaparece */
+  }
+}
+
+@keyframes latidoletra {
+  0% {
+    transform: scale(0.95);          /* Tamaño normal */
+    text-shadow: 0 0 0px rgba(255, 69, 0, 0.7); /* Sombra naranja pegada */
+  }
+  50% {
+    transform: scale(1);       /* Se agranda un 5% */
+    text-shadow: 0 0 8px rgba(255, 69, 0, 0.7); /* Sombra se expande y desaparece */
+  }
+  100% {
+    transform: scale(0.95);          /* Vuelve al tamaño normal */
+    text-shadow: 0 0 0px rgba(255, 69, 0, 0);   /* Sombra desaparece */
     }
 }

@@ -1,22 +1,29 @@
+@use "../../Colores" as *;
+@use "../../Fuentes" as *;
 header {
-  margin-top: 10px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-  
+    display: none;
+    margin-top: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
     nav {
-        color: #ffffff;
-        background-color: #000000;
+        color: $color-claro;
+        background-color: $color-oscuro;
         border-radius: 10px 10px 0px 0px; 
         padding: 10px 0px;
+        border: 1px solid $naranja-fuerte;
+        border-bottom: 0px;
+        border-left: 0px;
+        border-right: 0px;
     }
     ul {
         list-style: none;
         padding: 0px;
         margin: 0px;
         display: flex;
+        gap: 5px;
         justify-content: center;
     }
     a {
@@ -29,7 +36,7 @@ header {
         &:hover {
             text-decoration: underline;
             color: #ffffff;
-            background-color: #fff0e3;
+            background-color: $naranja-fuerte;
         }
     }
 }

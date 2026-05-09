@@ -1,0 +1,364 @@
+@use "../../Colores" as *;
+
+.campamento-page {
+  background-color: $color-oscuro;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../../img/campamento_bg.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: $color-claro;
+  font-family: 'Inter', Arial, sans-serif; // Tipografía más moderna y limpia
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+  // HERO SECTION
+  .campamento-hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+
+    .bg-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translateX(-50%) translateY(-50%);
+      z-index: 1;
+      object-fit: cover;
+      opacity: 0.5; // Oscurecemos el video
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,1) 100%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 20px;
+      animation: aparecer 1s ease-out;
+
+      .logo-gdf {
+        width: 150px;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.5));
+      }
+
+      .pre-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: $naranja;
+        margin-bottom: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      .slogan {
+        font-size: 2.5rem;
+        font-weight: 900;
+        margin: 0;
+        line-height: 1.2;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+
+        .accent {
+          color: $naranja-fuerte;
+        }
+      }
+
+      .fechas {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: $naranja;
+        margin-top: 15px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  // SECCIONES COMUNES
+  section {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: $color-claro;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cccccc;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+  }
+
+  .accent {
+    color: $naranja-fuerte;
+    font-weight: 900;
+  }
+
+  // PROPÓSITO
+  .proposito {
+    background: transparent;
+    
+    .lead {
+      font-size: 1.2rem;
+    }
+    
+    .highlight {
+      font-size: 1.5rem;
+      color: $color-claro;
+      margin-top: 30px;
+    }
+  }
+
+  // SOCIAL PROOF
+  .social-proof {
+    background: transparent;
+    padding: 40px 0; // full width
+    
+    .video-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(255, 69, 0, 0.15);
+      border: 1px solid rgba(255, 69, 0, 0.2);
+
+      .proof-video {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+
+  // INFORMATIVA
+  .informativa {
+    background: transparent;
+    
+    .info-card {
+      background: rgba(25, 25, 25, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  // RESISTENCIA
+  .resistencia {
+    background: transparent;
+    border-top: 1px solid rgba(255, 69, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 69, 0, 0.2);
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: $naranja;
+      margin-bottom: 40px;
+    }
+
+    .bullets-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+
+      .bullet {
+        background: rgba(20, 20, 20, 0.8);
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 4px solid $naranja-fuerte;
+        text-align: left;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateX(10px);
+        }
+
+        h3 {
+          color: $color-claro;
+          font-size: 1.5rem;
+          margin-top: 0;
+          margin-bottom: 10px;
+        }
+
+        p {
+          margin: 0;
+          font-size: 1.1rem;
+          color: #bbb;
+        }
+      }
+    }
+  }
+
+  // CONVERSIÓN
+  .conversion {
+    background: radial-gradient(circle at center, rgba(255,69,0,0.1) 0%, $color-oscuro 70%);
+    padding: 80px 20px;
+
+    .form-wrapper {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .cyber-form {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .input-group input {
+        width: 100%;
+        padding: 15px 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: $color-claro;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+
+        &:focus {
+          outline: none;
+          border-color: $naranja-fuerte;
+          background: rgba(255, 255, 255, 0.1);
+          box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+        }
+      }
+
+      .btn-pulse {
+        margin-top: 10px;
+        padding: 18px;
+        background: $naranja-fuerte;
+        color: $color-claro;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
+        animation: pulse 2s infinite;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #ff5e00;
+          transform: translateY(-2px);
+          box-shadow: 0 0 30px rgba(255, 69, 0, 0.6);
+          animation: none;
+        }
+      }
+    }
+  }
+
+  // TRUST SIGNALS
+  .trust-signals {
+    background: transparent;
+
+    .map-container {
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      
+      h3 {
+        color: $color-claro;
+        margin-bottom: 5px;
+      }
+
+      .map-wrapper {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 20px 0;
+      }
+
+      .address {
+        font-size: 0.9rem;
+        color: #888;
+      }
+    }
+
+    .ig-link {
+      .btn-instagram {
+        display: inline-block;
+        padding: 12px 30px;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 30px;
+        color: $color-claro;
+        font-weight: 700;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: rgba(255,255,255,0.1);
+          border-color: $color-claro;
+        }
+      }
+    }
+  }
+
+  // FOOTER OVERRIDE
+  footer {
+    background-color: #000;
+    padding: 30px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    
+    p {
+      color: #666;
+      font-size: 0.8rem;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+  }
+
+  // ANIMATIONS
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(255, 69, 0, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 69, 0, 0);
+    }
+  }
+
+  // RESPONSIVE
+  @media (min-width: 768px) {
+    .campamento-hero .slogan {
+      font-size: 4rem;
+    }
+    h2 {
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}

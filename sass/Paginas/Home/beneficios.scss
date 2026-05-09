@@ -1,0 +1,40 @@
+@use "../../Colores" as *;
+@use "../../Fuentes" as *;
+.beneficios {
+    width: 93%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    div {
+        background: $naranja-fuerte;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    p {
+        color: $color-claro;
+    }
+    h3 {
+        color: $color-claro;
+        text-transform: uppercase;
+        font-size: 1.5em;
+        margin: 1px;
+        font-weight: 900;
+    }
+    h2 {
+        text-align: center;
+        font-family: $fuente-titulos;
+        color: $color-acentos;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        text-transform: uppercase;
+        font-size: 2em;
+        margin: 0px;
+    } 
+    .icon{
+        font-size: 2em;
+        margin: 3px;
+    }
+
+}

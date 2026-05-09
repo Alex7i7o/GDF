@@ -1,10 +1,12 @@
-@use "Colores";
+@use "Colores" as *;
 @use "paginas/Home/Header";
 @use "paginas/Home/Intro";
 @use "paginas/Home/Categorias";
 @use "paginas/Home/Productos";
 @use "paginas/Home/Familia";
 @use "Fuentes" as *;
+@use "paginas/Home/beneficios.scss";
+@use "paginas/Campamento/campamento";
 
 
 div {
@@ -14,7 +16,7 @@ div {
 
 
 html {
-  color: Colores.$naranja;
+  color: $naranja;
   font-size: 1em;
   line-height: 1.4;
   letter-spacing: 1px;
@@ -23,7 +25,7 @@ html {
 }
 body {
   margin: 0px;
-  padding-bottom: 80px;
+  // padding-bottom: 80px; - para el menu
 }
 
 .hero {
@@ -56,14 +58,7 @@ footer {
   .contenedor_productos {
   display: flex;
   }
-  .categorias {
-  width: 50%;
-  }
-.categorias .categoria {
-  height: 300px;
-  width: 200px;
-  }
-
+  
   header {
   margin-top: 0px;
   position: sticky;
@@ -80,11 +75,42 @@ footer {
   margin-right: auto;
   }
 }
-/* Ejemplo de efecto aparición */
-html {
+/* Efecto aparición */
+body {
   animation: aparecer 0.8s ease-out;
 }
 @keyframes aparecer {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+footer {
+  p{
+    text-align: center;
+    padding: 0px 10px;
+  }
+}
+
+.btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; // Espacio entre el icono y el texto
+    margin: 10px;
+    font-size: 1em;
+    color: $color-claro;
+    background-color: $naranja-fuerte;
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+    padding: 5px;
+    .whatsapp-icon {
+        width: 40px;
+        height: 40px;
+        fill: currentColor; // ¡Clave! Hereda el color del texto del botón
+    }
+
+    // Al hacer hover, como usamos currentColor, todo cambia de color junto
+    &:hover {
+        background: $color-acentos;
+    }
 }

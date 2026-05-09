@@ -64,12 +64,17 @@ form.addEventListener('submit', e => {
     keepalive: true 
   })
   .then(() => {
-    // Como usamos no-cors, no podemos leer la respuesta, 
-    // pero podemos asumir que si no dio error, se envió.
-    alert("¡Inscripción recibida!");
+    // 1. Limpiamos el formulario
     form.reset();
+    
+    // 2. Avisamos al usuario
+    alert("¡Registro exitoso! Te estamos redirigiendo al grupo...");
+    
+    // 3. Redirigimos al WhatsApp
+    window.location.href = "https://chat.whatsapp.com/FhmYVDNs2uoEjYTJD5sqKg"; 
   })
   .catch(error => {
     console.error('Error:', error);
+    alert("Hubo un problema, intenta de nuevo.");
   });
 });
