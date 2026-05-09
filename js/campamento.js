@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (form) {
         form.addEventListener('submit', e => {
             e.preventDefault();
-            
+
             // Estado de carga
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'PROCESANDO...';
@@ -17,30 +17,31 @@ document.addEventListener("DOMContentLoaded", () => {
             submitBtn.style.opacity = '0.7';
 
             const formData = new FormData(form);
-            
-            fetch(scriptURL, { 
-                method: 'POST', 
-                mode: 'no-cors', 
+            formData.append('tipo', 'campa'); // Indica al script que debe ir a la Hoja 2 o procesar como campaña
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
                 body: formData,
-                keepalive: true 
+                keepalive: true
             })
-            .then(() => {
-                form.reset();
-                submitBtn.textContent = '¡REGISTRADO!';
-                submitBtn.style.backgroundColor = '#5da703'; // Verde éxito
-                
-                // Redirección a WhatsApp después de 1 segundo
-                setTimeout(() => {
-                    window.location.href = "https://chat.whatsapp.com/FhmYVDNs2uoEjYTJD5sqKg"; 
-                }, 1000);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Hubo un problema con la conexión. Por favor, intentá de nuevo.");
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
-            });
+                .then(() => {
+                    form.reset();
+                    submitBtn.textContent = '¡REGISTRADO!';
+                    submitBtn.style.backgroundColor = '#5da703'; // Verde éxito
+
+                    // Redirección a WhatsApp después de 1 segundo
+                    setTimeout(() => {
+                        window.location.href = "https://chat.whatsapp.com/FhmYVDNs2uoEjYTJD5sqKg";
+                    }, 1000);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Hubo un problema con la conexión. Por favor, intentá de nuevo.");
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                });
         });
     }
 
