@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentValue = parseInt(counters[key].display.textContent) || 0;
     updateDisplay(key, currentValue + 1);
     animateClick(key);
+    showToast(key);
 
     // 2. Enviar a Google Sheets en segundo plano
     const formData = new FormData();
@@ -97,6 +98,35 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.remove('clicked');
       }, 200);
     }
+  }
+
+  // Mostrar Notificación Flotante (Toast)
+  function showToast(key) {
+    const toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) return;
+
+    const messages = {
+      horno: "Fuerza. Hay una iglesia entera cubriéndote la espalda.",
+      postre: "Bien peleado, soldado. El Reino celebra tu victoria en lo secreto.",
+      fe: "Su presencia te envuelve en medio del fuego."
+    };
+
+    const message = messages[key];
+    if (!message) return;
+
+    const toast = document.createElement('div');
+    toast.className = 'toast-message';
+    toast.textContent = message;
+
+    toastContainer.appendChild(toast);
+
+    // Desaparecer después de 3.5 segundos
+    setTimeout(() => {
+      toast.classList.add('fade-out');
+      toast.addEventListener('animationend', () => {
+        toast.remove();
+      });
+    }, 3500);
   }
 
   // Ejecutar inicialización
