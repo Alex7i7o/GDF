@@ -3,7 +3,7 @@
 .orden-horno-page {
   background-color: $color-oscuro;
   // Reutilizamos el fondo cinemático del campamento
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('../../../img/campamento_bg.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('../../../img/campamento_bg.png');
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -27,20 +27,29 @@
     }
 
     .titulo-principal {
-      font-size: 2.5rem;
+      font-size: 1.8rem;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       margin: 0 0 10px 0;
       color: $color-claro;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+      
+      @media (min-width: 768px) {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+      }
     }
 
     .subtitulo {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #aaa;
       margin: 0;
       font-weight: 400;
+      
+      @media (min-width: 768px) {
+        font-size: 1.1rem;
+      }
     }
   }
 
