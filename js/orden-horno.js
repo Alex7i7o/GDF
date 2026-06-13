@@ -2,19 +2,8 @@ import "../sass/Estilo.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
   
-  // Nombres de las claves en LocalStorage
-  const KEYS = {
-    horno: 'gdf_horno_count',
-    postre: 'gdf_postre_count',
-    fe: 'gdf_fe_count'
-  };
-
-  // Valores base iniciales ficticios (para dar sensación de comunidad)
-  const BASE_COUNTS = {
-    horno: 142,
-    postre: 89,
-    fe: 215
-  };
+  // URL del Webhook de Google Apps Script
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxEnB516Z_8_s91T7NE8tlbPdcDdOmDEYUyhc4o2runW7sechDYHEYWBazBC_tpRSIf/exec';
 
   // Referencias a los elementos del DOM
   const counters = {
@@ -32,41 +21,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Inicializar contadores
-  function initCounters() {
-    Object.keys(KEYS).forEach(key => {
-      // Intentar obtener el valor guardado
-      let savedValue = localStorage.getItem(KEYS[key]);
-      
-      // Si no hay valor guardado, usar el valor base
-      if (!savedValue) {
-        savedValue = BASE_COUNTS[key];
-        localStorage.setItem(KEYS[key], savedValue);
-      }
-      
-      // Mostrar el valor en el HTML
-      updateDisplay(key, parseInt(savedValue));
+  // Variable para evitar doble clics rápidos
+  let isUpdating = false;
 
+  // Inicializar contadores cargando desde Sheets
+  function initCounters() {
+    // Estado de carga inicial
+    Object.keys(counters).forEach(key => {
+      counters[key].display.textContent = '...';
+      
       // Agregar evento click
       counters[key].btn.addEventListener('click', () => {
-        incrementCounter(key);
+        if (!isUpdating) {
+          incrementCounter(key);
+        }
       });
     });
+
+    // Petición GET para traer los contadores actuales
+    fetch(scriptURL)
+      .then(response => response.json())
+      .then(data => {
+        updateDisplay('horno', data.horno);
+        updateDisplay('postre', data.postre);
+        updateDisplay('fe', data.fe);
+      })
+      .catch(error => {
+        console.error('Error al cargar contadores:', error);
+        Object.keys(counters).forEach(key => counters[key].display.textContent = '0');
+      });
   }
 
   // Incrementar contador
   function incrementCounter(key) {
-    let currentValue = parseInt(localStorage.getItem(KEYS[key]));
-    currentValue++;
+    isUpdating = true;
     
-    // Guardar nuevo valor
-    localStorage.setItem(KEYS[key], currentValue);
-    
-    // Actualizar vista
-    updateDisplay(key, currentValue);
-    
-    // Animación visual
+    // 1. Actualización Visual Optimista (instantánea)
+    let currentValue = parseInt(counters[key].display.textContent) || 0;
+    updateDisplay(key, currentValue + 1);
     animateClick(key);
+
+    // 2. Enviar a Google Sheets en segundo plano
+    const formData = new FormData();
+    formData.append('tipo', 'contador');
+    formData.append('contador', key);
+
+    fetch(scriptURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    })
+    .then(() => {
+      isUpdating = false; // Liberar bloqueo
+    })
+    .catch(error => {
+      console.error('Error al guardar contador:', error);
+      isUpdating = false;
+    });
   }
 
   // Actualizar el DOM
@@ -82,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const btn = counters[key].btn;
       btn.classList.add('clicked');
       
-      // Remover clase después de la animación
       setTimeout(() => {
         btn.classList.remove('clicked');
       }, 200);
