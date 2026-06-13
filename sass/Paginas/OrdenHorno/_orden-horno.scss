@@ -1,0 +1,241 @@
+@use "../../Colores" as *;
+
+.orden-horno-page {
+  background-color: $color-oscuro;
+  // Reutilizamos el fondo cinemático del campamento
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('../../../img/campamento_bg.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: $color-claro;
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  /* ENCABEZADO */
+  .horno-header {
+    text-align: center;
+    padding: 60px 20px 30px;
+    
+    .logo-gdf-small {
+      width: 100px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.3));
+    }
+
+    .titulo-principal {
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0 0 10px 0;
+      color: $color-claro;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    .subtitulo {
+      font-size: 1.1rem;
+      color: #aaa;
+      margin: 0;
+      font-weight: 400;
+    }
+  }
+
+  /* MAIN CONTENT */
+  .horno-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px 60px;
+  }
+
+  /* CONTADORES */
+  .contadores-seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 60px;
+
+    .contador-card {
+      background: rgba(15, 15, 15, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+      }
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+        &::before {
+          transform: translateX(100%);
+        }
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+
+      .contador-numero {
+        font-size: 3rem;
+        font-weight: 900;
+        margin-bottom: 5px;
+        line-height: 1;
+        transition: transform 0.2s ease;
+      }
+
+      .contador-accion {
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $color-claro;
+        margin-bottom: 5px;
+      }
+
+      .contador-sub {
+        font-size: 0.9rem;
+        color: #777;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Variantes de Color */
+      &.red {
+        border-bottom: 3px solid #ff3333;
+        &:hover { border-color: #ff5555; }
+        .contador-numero { color: #ff3333; text-shadow: 0 0 15px rgba(255, 51, 51, 0.4); }
+      }
+
+      &.amber {
+        border-bottom: 3px solid #ffaa00;
+        &:hover { border-color: #ffcc00; }
+        .contador-numero { color: #ffaa00; text-shadow: 0 0 15px rgba(255, 170, 0, 0.4); }
+      }
+
+      &.grey {
+        border-bottom: 3px solid #cccccc;
+        &:hover { border-color: #ffffff; }
+        .contador-numero { color: #cccccc; text-shadow: 0 0 15px rgba(204, 204, 204, 0.4); }
+      }
+
+      /* Animación de clic en el número */
+      &.clicked .contador-numero {
+        transform: scale(1.1);
+      }
+    }
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      max-width: 900px;
+      
+      .contador-card {
+        flex: 1;
+      }
+    }
+  }
+
+  /* PROTOCOLO DE EMERGENCIA */
+  .protocolo-seccion {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 40px 20px;
+    text-align: center;
+
+    .protocolo-titulo {
+      font-size: 1.5rem;
+      color: #ff4500;
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      background-color: #000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .emergencia-contacto {
+      .btn-whatsapp-emergencia {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: #25D366; /* Verde oficial de WhatsApp */
+        color: #ffffff;
+        padding: 16px 32px;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+
+        .whatsapp-icon {
+          width: 24px;
+          height: 24px;
+          fill: currentColor;
+        }
+
+        &:hover {
+          background: #20bd5a;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+      }
+    }
+  }
+
+  /* FOOTER */
+  .horno-footer {
+    text-align: center;
+    padding: 20px;
+    background: #050505;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+    p {
+      color: #555;
+      font-size: 0.85rem;
+      margin: 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+}

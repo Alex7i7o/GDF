@@ -12,6 +12,7 @@ export default defineConfig({
         nosotros: resolve(__dirname, 'nosotros.html'),
         blog: resolve(__dirname, 'blog.html'),
         plantilla: resolve(__dirname, 'Plantilla.html'),
+        ordenHorno: resolve(__dirname, 'orden-horno.html'),
       }
     }
   }
